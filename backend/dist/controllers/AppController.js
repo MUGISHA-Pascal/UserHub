@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppPost = void 0;
+exports.AppGet = exports.AppPost = void 0;
 const User_1 = __importDefault(require("../models/User"));
 const AppPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { FirstName, SecondName, Phone, Email } = req.body;
@@ -26,3 +26,14 @@ const AppPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.AppPost = AppPost;
+const AppGet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const users = yield User_1.default.find();
+        res.send({ users });
+    }
+    catch (error) {
+        console.log("the error is " + error);
+        res.send(error);
+    }
+});
+exports.AppGet = AppGet;

@@ -10,3 +10,13 @@ export const AppPost = async (req: Request, res: Response) => {
     res.send(error);
   }
 };
+
+export const AppGet = async (req: Request, res: Response) => {
+  try {
+    const users = await User.find();
+    res.send({ users });
+  } catch (error) {
+    console.log("the error is " + error);
+    res.send(error);
+  }
+};
