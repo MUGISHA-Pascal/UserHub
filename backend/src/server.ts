@@ -13,6 +13,7 @@ const connect = async () => {
   });
 };
 connect();
+app.use(cors());
 app.use("/app", AppRoutes);
 const port = process.env.PORT;
 app.listen(port, () => {
