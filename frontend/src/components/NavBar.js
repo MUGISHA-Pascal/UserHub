@@ -4,6 +4,7 @@ import Logo from "../assets/logo.png";
 import { FaUsers } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ setNavExist }) => {
   return (
@@ -18,14 +19,20 @@ const Navbar = ({ setNavExist }) => {
         />
       </div>
       <div className="text-white flex flex-col space-y-[20px] mt-[50px] font-bold text-[15px] ">
-        <a className="hover:cursor-pointer flex flex-row space-x-[10px] items-center hover:bg-gray-700 hover:bg-opacity-50 p-[10px]  rounded-[10px] w-[200px] justify-center hover:border-[1px] border-white ">
+        <Link
+          to="/manage-user"
+          className="hover:cursor-pointer flex flex-row space-x-[10px] items-center hover:bg-gray-700 hover:bg-opacity-50 p-[10px]  rounded-[10px] w-[200px] justify-center hover:border-[1px] border-white "
+        >
           <FaUsers className="text-white" />
           <p>manage user</p>
-        </a>
-        <a className="hover:cursor-pointer flex flex-row space-x-[10px] items-center hover:bg-gray-700 hover:bg-opacity-50 p-[10px]  rounded-[10px] w-[200px] justify-center hover:border-[1px] border-white ">
+        </Link>
+        <Link
+          to="/"
+          className="hover:cursor-pointer flex flex-row space-x-[10px] items-center hover:bg-gray-700 hover:bg-opacity-50 p-[10px]  rounded-[10px] w-[200px] justify-center hover:border-[1px] border-white "
+        >
           <MdDashboard />
           <p>Dashboard</p>
-        </a>
+        </Link>
       </div>
       <img src={Logo} className="mt-[300px] w-[45px] h-[30px]" />
     </div>
