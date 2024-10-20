@@ -5,8 +5,10 @@ import mongoose from "mongoose";
 import AppRoutes from "./routes/AppRoutes";
 dotenv.config();
 const app: Express = express();
+app.use(express.json());
 const connect = async () => {
-  await mongoose.connect().then(() => {
+  const MongoUrl = process.env.MongoUrl;
+  await mongoose.connect(MongoUrl as string).then(() => {
     console.log("connected to the database");
   });
 };
