@@ -17,7 +17,7 @@ const User_1 = __importDefault(require("../models/User"));
 const AppPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { FirstName, SecondName, Phone, Email } = req.body;
     try {
-        const user = new User_1.default({ FirstName, SecondName, Phone, Email });
+        const user = yield new User_1.default({ FirstName, SecondName, Phone, Email }).save();
         res.send({ user });
     }
     catch (error) {
