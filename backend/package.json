@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon ./dist/server.js",
+    "start": "nodemon dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^5.0.0",
     "@types/mongoose": "^5.11.97",
-    "@types/nodemon": "^1.19.6"
+    "@types/nodemon": "^1.19.6",
+    "nodemon": "^3.1.7"
   }
 }
