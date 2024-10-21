@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState("");
   const [choice, setChoice] = useState("");
   useEffect(() => {
     fetch("https://userhub-xmb9.onrender.com/app/All-users")
