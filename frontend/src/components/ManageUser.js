@@ -56,6 +56,7 @@ const ManageUser = ({ setNavExist }) => {
               }}
               value={FirstName}
               placeholder="first name"
+              required
               className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
           </div>
@@ -72,6 +73,7 @@ const ManageUser = ({ setNavExist }) => {
               }}
               value={SecondName}
               type="text"
+              required
               placeholder="first name"
               className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
@@ -86,6 +88,7 @@ const ManageUser = ({ setNavExist }) => {
             <input
               type="number"
               placeholder="+ phone"
+              required
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
@@ -104,13 +107,14 @@ const ManageUser = ({ setNavExist }) => {
               }}
               value={Email}
               placeholder="email"
+              required
               className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
           </div>
         </div>
         <button
           type="submit"
-          className="text-[#242424] bg-white mt-[20px] text-[15px] font-bold p-[5px] hover:bg-gray-300 rounded-[30px] w-[100px]"
+          className="text-white bg-black mt-[20px] text-[15px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] border-gray-400 rounded-[30px] w-[100px]"
         >
           Add user
         </button>

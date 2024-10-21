@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MdDashboard } from "react-icons/md";
-
+import { MdOutlineNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
 const Dashboard = ({ setNavExist }) => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [choice, setChoice] = useState("");
+  const [CurrentPage, setCurrent] = useState(1);
   useEffect(() => {
     fetch("https://userhub-xmb9.onrender.com/app/All-users")
       .then((response) => response.json())
@@ -56,7 +58,27 @@ const Dashboard = ({ setNavExist }) => {
             );
       break;
   }
-  console.log(filteredusers);
+  const totalNumberElements = 5;
+  const lastIndex = CurrentPage * totalNumberElements;
+  const firstIndex = lastIndex - totalNumberElements;
+  let paginatedfilteredusers = filteredusers.slice(firstIndex, lastIndex);
+  const totalNumberPages = Math.ceil(
+    filteredusers.length / totalNumberElements
+  );
+
+  const handleNext = () => {
+    if (CurrentPage < totalNumberPages) {
+      setCurrent(CurrentPage + 1);
+    }
+  };
+  const handleNumberClick = (pageNumber) => {
+    setCurrent(pageNumber);
+  };
+  const handlePrevious = () => {
+    if (CurrentPage > 1) {
+      setCurrent(CurrentPage - 1);
+    }
+  };
 
   return (
     <div
@@ -74,7 +96,7 @@ const Dashboard = ({ setNavExist }) => {
         </label>
         <select
           value={choice}
-          className="text-white bg-[#242424] border-[1px] focus:outline-none text-[12px] rounded-[5px]"
+          className="text-white bg-[#242424] border-[1px] focus:outline-none border-gray-500 text-[12px] rounded-[5px]"
           onChange={(e) => {
             setChoice(e.target.value);
           }}
@@ -91,31 +113,58 @@ const Dashboard = ({ setNavExist }) => {
           }}
           value={search}
           id="search"
-          className="bg-[#242424] border-[1px] rounded-[5px] focus:outline-none"
+          className="bg-[#242424] border-[1px] rounded-[5px] border-gray-500 focus:outline-none"
         />
       </div>
-      <table className="w-[800px] border-[1px] rounded-[10px]">
-        <thead className="border-[1px] rounded-[10px]">
-          <tr className="border-[1px] rounded-[10px]">
-            <th className="border-[1px] rounded-[10px] border-gray-500">
-              First-name
-            </th>
-            <th className="border-[1px] rounded-[10px]">Second-name</th>
-            <th className="border-[1px] rounded-[10px]">Phone</th>
-            <th className="border-[1px] rounded-[10px]">Email</th>
+      <table className="w-[800px] rounded-[10px] ">
+        <thead className="text-[13px]">
+          <tr className="bg-black">
+            <th className="border-[1px] p-2 border-gray-500">First-name</th>
+            <th className="border-[1px]  p-2 border-gray-500">Second-name</th>
+            <th className="border-[1px]  p-2 border-gray-500">Phone</th>
+            <th className="border-[1px]  p-2 border-gray-500">Email</th>
           </tr>
         </thead>
-        <tbody className="border-[1px]">
-          {filteredusers.map((user) => (
-            <tr key={user._id} className="text-white border-[1px]">
-              <td className="border-[1px]">{user.FirstName}</td>
-              <td className="border-[1px]">{user.SecondName}</td>
-              <td className="border-[1px]">{user.Phone}</td>
-              <td className="border-[1px]">{user.Email}</td>
+        <tbody className="border-[1px] text-[13px]">
+          {paginatedfilteredusers.map((user) => (
+            <tr key={user._id} className="text-white">
+              <td className="border-[1px] border-gray-500 p-2">
+                {user.FirstName}
+              </td>
+              <td className="border-[1px] border-gray-500 p-2">
+                {user.SecondName}
+              </td>
+              <td className="border-[1px] border-gray-500 p-2">{user.Phone}</td>
+              <td className="border-[1px] border-gray-500 p-2">{user.Email}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="flex flex-row space-x-[10px] items-center ml-[300px] text-[10px]">
+        <GrFormPrevious
+          onClick={handlePrevious}
+          className="font-bold text-lg"
+        />
+        {Array.from({ length: totalNumberPages }, (_, index) => index + 1).map(
+          (PageNumber) => (
+            <button
+              key={PageNumber}
+              onClick={() => {
+                handleNumberClick(PageNumber);
+              }}
+              className={`p-[4px] rounded-full ${
+                CurrentPage === PageNumber ? "bg-gray-700" : "bg-black"
+              }`}
+            >
+              {PageNumber}
+            </button>
+          )
+        )}
+        <MdOutlineNavigateNext
+          className="font-bold text-[20px]"
+          onClick={handleNext}
+        />
+      </div>
     </div>
   );
 };
