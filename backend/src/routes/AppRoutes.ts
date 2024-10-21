@@ -10,5 +10,5 @@ const AppRoutes = Router();
 AppRoutes.post("/Add-user", AppPost);
 AppRoutes.get("/All-users", AppGet);
 AppRoutes.put("/Update-user/:id", AppUpdate);
-AppRoutes.delete("/Delete-user/:id", AppDelete);
+AppRoutes.delete("/Delete-user", AppDelete);
 export default AppRoutes;

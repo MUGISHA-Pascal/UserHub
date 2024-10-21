@@ -79,10 +79,23 @@ const Dashboard = ({ setNavExist }) => {
       setCurrent(CurrentPage - 1);
     }
   };
+  const handleDelete = async (id) => {
+    await fetch(
+      `https://userhub-xmb9.onrender.com/app/Delete-user`,
+
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          body: JSON.stringify({ id }),
+        },
+      }
+    );
+  };
 
   return (
     <div
-      className="flex flex-col items-start ml-[100px] space-y-[20px] "
+      className="flex flex-col items-start ml-[100px] space-y-[20px] pb-[30px]"
       onClick={() => {
         setNavExist(false);
       }}
@@ -116,13 +129,14 @@ const Dashboard = ({ setNavExist }) => {
           className="bg-[#242424] border-[1px] rounded-[5px] border-gray-500 focus:outline-none"
         />
       </div>
-      <table className="w-[800px] rounded-[10px] ">
+      <table className="w-[800px] rounded-[10px]">
         <thead className="text-[13px]">
           <tr className="bg-black">
             <th className="border-[1px] p-2 border-gray-500">First-name</th>
             <th className="border-[1px]  p-2 border-gray-500">Second-name</th>
             <th className="border-[1px]  p-2 border-gray-500">Phone</th>
             <th className="border-[1px]  p-2 border-gray-500">Email</th>
+            <th className="border-[1px]  p-2 border-gray-500">Manage</th>
           </tr>
         </thead>
         <tbody className="border-[1px] text-[13px]">
@@ -136,6 +150,19 @@ const Dashboard = ({ setNavExist }) => {
               </td>
               <td className="border-[1px] border-gray-500 p-2">{user.Phone}</td>
               <td className="border-[1px] border-gray-500 p-2">{user.Email}</td>
+              <td className="flex flex-row space-x-[10px] px-[10px] items-center justify-center border-[1px] border-gray-500 p-2">
+                <button
+                  className="text-white bg-black text-[12px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px]"
+                  onClick={() => {
+                    handleDelete(user._id);
+                  }}
+                >
+                  delete
+                </button>
+                <button className="text-white bg-black text-[12px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px]">
+                  update
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -38,7 +38,7 @@ const ManageUser = ({ setNavExist }) => {
       </div>
       <form
         onSubmit={handlesubmit}
-        className="border-gray-500 border-[1px] mt-[50px] w-[700px] flex flex-col items-center rounded-[20px] h-[230px] mb-[50px] p-0"
+        className="border-gray-500 border-[1px] mt-[50px] w-[700px] mb-[100px] flex flex-col items-center rounded-[20px] h-[230px] p-0"
       >
         <div className="h-[3px] w-[200px]  bg-white rounded-br-[5px] rounded-bl-[5px]"></div>
         <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
