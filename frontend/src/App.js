@@ -25,8 +25,14 @@ function App() {
           </heading>
           <section>
             <Routes>
-              <Route element={<ManageUser />} path="/manage-user" />
-              <Route element={<Dashboard />} path="/" />
+              <Route
+                element={<ManageUser setNavExist={setNavExist} />}
+                path="/manage-user"
+              />
+              <Route
+                element={<Dashboard setNavExist={setNavExist} />}
+                path="/"
+              />
             </Routes>
           </section>
         </div>

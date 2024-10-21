@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUsers } from "react-icons/fa";
-const ManageUser = () => {
+const ManageUser = ({ setNavExist }) => {
   const [FirstName, setFirst] = useState("");
   const [SecondName, setSecond] = useState("");
   const [Phone, setPhone] = useState(null);
@@ -27,7 +27,12 @@ const ManageUser = () => {
     setEmail("");
   };
   return (
-    <div className="flex flex-col items-center">
+    <div
+      className="flex flex-col items-center"
+      onClick={() => {
+        setNavExist(false);
+      }}
+    >
       <div className="flex flex-row space-x-[10px] items-center mt-[20px]">
         <FaUsers /> <p className="font-bold">MANAGE USERS</p>
       </div>

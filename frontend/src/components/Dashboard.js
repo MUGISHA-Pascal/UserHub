@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { MdDashboard } from "react-icons/md";
 
-const Dashboard = () => {
+const Dashboard = ({ setNavExist }) => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [choice, setChoice] = useState("");
@@ -58,14 +59,22 @@ const Dashboard = () => {
   console.log(filteredusers);
 
   return (
-    <div className="flex flex-col items-start ml-[100px] space-y-[20px]">
+    <div
+      className="flex flex-col items-start ml-[100px] space-y-[20px] "
+      onClick={() => {
+        setNavExist(false);
+      }}
+    >
+      <div className="flex flex-row space-x-[10px] items-center justify-center mt-[20px]">
+        <MdDashboard /> <p className="font-bold">DASHBOARD</p>
+      </div>
       <div className="mt-[20px] flex flex-row space-x-[10px] ">
         <label htmlFor="search" className="font-bold">
           Filter :
         </label>
         <select
           value={choice}
-          className="text-white bg-[#242424] border-[1px] focus:outline-none rounded-[5px]"
+          className="text-white bg-[#242424] border-[1px] focus:outline-none text-[12px] rounded-[5px]"
           onChange={(e) => {
             setChoice(e.target.value);
           }}
@@ -88,7 +97,9 @@ const Dashboard = () => {
       <table className="w-[800px] border-[1px] rounded-[10px]">
         <thead className="border-[1px] rounded-[10px]">
           <tr className="border-[1px] rounded-[10px]">
-            <th className="border-[1px] rounded-[10px]">First-name</th>
+            <th className="border-[1px] rounded-[10px] border-gray-500">
+              First-name
+            </th>
             <th className="border-[1px] rounded-[10px]">Second-name</th>
             <th className="border-[1px] rounded-[10px]">Phone</th>
             <th className="border-[1px] rounded-[10px]">Email</th>
