@@ -20,3 +20,32 @@ export const AppGet = async (req: Request, res: Response) => {
     res.send(error);
   }
 };
+
+export const AppUpdate = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { FirstName, SecondName, Phone, Email } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(id, {
+      FirstName,
+      SecondName,
+      Phone,
+      Email,
+    });
+    console.log(updatedUser);
+    res.send({ updatedUser });
+  } catch (error) {
+    console.log("the error is ", error);
+    res.send(error);
+  }
+};
+
+export const AppDelete = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const deletedUser = await User.findByIdAndDelete(id);
+    res.send(deletedUser);
+  } catch (error) {
+    console.log("the error is " + error);
+    res.send(error);
+  }
+};
