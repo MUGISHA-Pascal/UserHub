@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { MdDashboard } from "react-icons/md";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
+import UpdateModal from "./UpdateModal";
 const Dashboard = ({ setNavExist }) => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [choice, setChoice] = useState("");
   const [CurrentPage, setCurrent] = useState(1);
+  const [ShowUpdate, setShowModal] = useState(null);
   const GetAllUsers = async () => {
     await fetch("https://userhub-xmb9.onrender.com/app/All-users")
       .then((response) => response.json())
@@ -105,6 +107,13 @@ const Dashboard = ({ setNavExist }) => {
         setNavExist(false);
       }}
     >
+      {ShowUpdate && (
+        <UpdateModal
+          setShowModal={setShowModal}
+          ShowUpdate={ShowUpdate}
+          setUsers={setUsers}
+        />
+      )}
       <div className="flex flex-row space-x-[10px] items-center justify-center mt-[20px]">
         <MdDashboard /> <p className="font-bold">DASHBOARD</p>
       </div>
@@ -164,7 +173,12 @@ const Dashboard = ({ setNavExist }) => {
                 >
                   delete
                 </button>
-                <button className="text-white bg-black text-[12px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px]">
+                <button
+                  onClick={() => {
+                    setShowModal(user._id);
+                  }}
+                  className="text-white bg-black text-[12px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px]"
+                >
                   update
                 </button>
               </td>

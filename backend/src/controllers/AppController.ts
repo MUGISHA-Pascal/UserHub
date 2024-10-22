@@ -25,12 +25,16 @@ export const AppUpdate = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { FirstName, SecondName, Phone, Email } = req.body;
-    const updatedUser = await User.findByIdAndUpdate(id, {
-      FirstName,
-      SecondName,
-      Phone,
-      Email,
-    });
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      {
+        FirstName,
+        SecondName,
+        Phone,
+        Email,
+      },
+      { new: true }
+    );
     console.log(updatedUser);
     res.send({ updatedUser });
   } catch (error) {
