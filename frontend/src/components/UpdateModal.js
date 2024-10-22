@@ -9,7 +9,7 @@ const UpdateModal = ({ setShowModal, ShowUpdate, setUsers }) => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     await fetch(
-      `https://userhub-xmb9.onrender.com/app/Update-user?id=${ShowUpdate}`,
+      `https://userhub-xmb9.onrender.com/app/Update-user/${ShowUpdate}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
