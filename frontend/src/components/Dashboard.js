@@ -7,8 +7,8 @@ const Dashboard = ({ setNavExist }) => {
   const [search, setSearch] = useState("");
   const [choice, setChoice] = useState("");
   const [CurrentPage, setCurrent] = useState(1);
-  useEffect(() => {
-    fetch("https://userhub-xmb9.onrender.com/app/All-users")
+  const GetAllUsers = async () => {
+    await fetch("https://userhub-xmb9.onrender.com/app/All-users")
       .then((response) => response.json())
       .then((usersdata) => {
         setUsers(usersdata.users);
@@ -16,6 +16,9 @@ const Dashboard = ({ setNavExist }) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+  useEffect(() => {
+    GetAllUsers();
   }, []);
   let filteredusers;
   switch (choice) {
@@ -79,6 +82,7 @@ const Dashboard = ({ setNavExist }) => {
       setCurrent(CurrentPage - 1);
     }
   };
+
   const handleDelete = async (id) => {
     await fetch(
       `https://userhub-xmb9.onrender.com/app/Delete-user`,
@@ -88,10 +92,11 @@ const Dashboard = ({ setNavExist }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id: id }),
       }
     );
   };
+  GetAllUsers();
 
   return (
     <div
