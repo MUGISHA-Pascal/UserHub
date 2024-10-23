@@ -28,24 +28,24 @@ const ManageUser = ({ setNavExist }) => {
   };
   return (
     <div
-      className="flex flex-col items-center"
+      className="flex flex-col items-center max-sm:p-[10px]"
       onClick={() => {
         setNavExist(false);
       }}
     >
-      <div className="flex flex-row space-x-[10px] items-center mt-[20px]">
-        <FaUsers /> <p className="font-bold">MANAGE USERS</p>
+      <div className="flex flex-row space-x-[10px] items-center mt-[20px] max-sm:mt-[10px]">
+        <FaUsers /> <p className="font-bold max-sm:text-[12px]">MANAGE USERS</p>
       </div>
       <form
         onSubmit={handlesubmit}
-        className="border-gray-500 border-[1px] mt-[50px] w-[700px] mb-[100px] flex flex-col items-center rounded-[20px] h-[230px] p-0"
+        className="border-gray-500 border-[1px] mt-[50px] max-sm:mt-[25px] max-sm:w-full w-[700px] mb-[100px] flex flex-col items-center rounded-[20px] max-sm:h-[300px] h-[230px] p-0"
       >
-        <div className="h-[3px] w-[200px]  bg-white rounded-br-[5px] rounded-bl-[5px]"></div>
-        <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
+        <div className="h-[3px] w-[200px]  bg-white rounded-br-[5px]  max-sm:w-[100px] rounded-bl-[5px]"></div>
+        <div className="mt-[10px] grid grid-cols-2 max-sm:grid-cols-1 gap-[10px]">
           <div className="flex flex-col space-y-[7px] items-start">
             <label
               for="firstName"
-              className="text-[15px] font-bold text-gray-400"
+              className="text-[15px] max-sm:text-[10px] font-bold text-gray-400"
             >
               First name :
             </label>
@@ -57,13 +57,13 @@ const ManageUser = ({ setNavExist }) => {
               value={FirstName}
               placeholder="first name"
               required
-              className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
+              className="p-[4px] w-[300px] max-sm:placeholder:text-[10px] max-sm:text-[10px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
           </div>
           <div className="flex flex-col space-y-[7px] items-start">
             <label
               for="firstName"
-              className="text-[15px] font-bold text-gray-400"
+              className="text-[15px] max-sm:text-[10px] font-bold text-gray-400"
             >
               Second name :
             </label>
@@ -75,13 +75,13 @@ const ManageUser = ({ setNavExist }) => {
               type="text"
               required
               placeholder="first name"
-              className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
+              className="p-[4px] w-[300px] max-sm:placeholder:text-[10px] max-sm:text-[10px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
           </div>
           <div className="flex flex-col space-y-[7px] items-start">
             <label
               for="firstName"
-              className="text-[15px] font-bold text-gray-400"
+              className="text-[15px] max-sm:text-[10px] font-bold text-gray-400"
             >
               Phone :
             </label>
@@ -93,11 +93,14 @@ const ManageUser = ({ setNavExist }) => {
                 setPhone(e.target.value);
               }}
               value={Phone}
-              className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
+              className="p-[4px] w-[300px] max-sm:placeholder:text-[10px] max-sm:text-[10px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
           </div>
           <div className="flex flex-col space-y-[7px] items-start">
-            <label for="Email" className="text-[15px] font-bold text-gray-400">
+            <label
+              for="Email"
+              className="text-[15px] font-bold max-sm:text-[10px] text-gray-400"
+            >
               Email :
             </label>
             <input
@@ -108,13 +111,13 @@ const ManageUser = ({ setNavExist }) => {
               value={Email}
               placeholder="email"
               required
-              className="p-[4px] w-[300px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
+              className="p-[4px] w-[300px] max-sm:placeholder:text-[10px] max-sm:text-[10px] bg-[#242424] border-[1px] border-gray-500 placeholder:font-thin placeholder:text-[14px] px-[4px] rounded-[7px] focus:outline-none text-[15px]"
             />
           </div>
         </div>
         <button
           type="submit"
-          className="text-white bg-black mt-[20px] text-[15px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] border-gray-400 rounded-[30px] w-[100px]"
+          className="text-white bg-black mt-[20px] text-[15px] max-sm:text-[10px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] border-gray-400 rounded-[30px] w-[100px]"
         >
           Add user
         </button>

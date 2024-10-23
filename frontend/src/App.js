@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <div className="bg-[rgb(36,36,36)] h-full w-full text-white">
           {navExist && <Navbar setNavExist={setNavExist} />}
-          <heading className="flex flex-row items-center pt-[150px] ml-[100px] border-b-[1px] w-[1100px] border-gray-500">
+          <heading className="flex flex-row items-center pt-[150px] max-sm:pt-[75px] max-sm:p-[10px] ml-[100px] max-sm:ml-0 max-sm:w-full max-sm:mr-[10px] border-b-[1px] w-[1100px] border-gray-500">
             <CiMenuBurger
               className="text-gray-300"
               onClick={() => {
