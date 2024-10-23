@@ -102,7 +102,7 @@ const Dashboard = ({ setNavExist }) => {
 
   return (
     <div
-      className="flex flex-col items-start ml-[100px] space-y-[20px] pb-[30px]"
+      className="flex flex-col items-start ml-[100px] max-sm:ml-[12px] space-y-[20px] pb-[30px]"
       onClick={() => {
         setNavExist(false);
       }}
@@ -114,16 +114,16 @@ const Dashboard = ({ setNavExist }) => {
           setUsers={setUsers}
         />
       )}
-      <div className="flex flex-row space-x-[10px] items-center justify-center mt-[20px]">
-        <MdDashboard /> <p className="font-bold">DASHBOARD</p>
+      <div className="flex flex-row space-x-[10px] items-center justify-center max-sm:text-[12px] mt-[20px]">
+        <MdDashboard /> <p className="font-bold ">DASHBOARD</p>
       </div>
       <div className="mt-[20px] flex flex-row space-x-[10px] ">
-        <label htmlFor="search" className="font-bold">
+        <label htmlFor="search" className="font-bold max-sm:text-[10px]">
           Filter :
         </label>
         <select
           value={choice}
-          className="text-white bg-[#242424] border-[1px] focus:outline-none border-gray-500 text-[12px] rounded-[5px]"
+          className="text-white max-sm:text-[10px] bg-[#242424] border-[1px] focus:outline-none border-gray-500 text-[12px] rounded-[5px]"
           onChange={(e) => {
             setChoice(e.target.value);
           }}
@@ -140,13 +140,15 @@ const Dashboard = ({ setNavExist }) => {
           }}
           value={search}
           id="search"
-          className="bg-[#242424] border-[1px] rounded-[5px] border-gray-500 focus:outline-none"
+          className="bg-[#242424] border-[1px] max-sm:text-[10px] rounded-[5px] border-gray-500 focus:outline-none"
         />
       </div>
-      <table className="w-[800px] rounded-[10px]">
+      <table className="w-[800px] max-sm:w-[280px] rounded-[10px] ">
         <thead className="text-[13px]">
-          <tr className="bg-black">
-            <th className="border-[1px] p-2 border-gray-500">First-name</th>
+          <tr className="bg-black max-sm:text-[7px]">
+            <th className="border-[1px] p-2 max-sm:p-1 border-gray-500">
+              First-name
+            </th>
             <th className="border-[1px]  p-2 border-gray-500">Second-name</th>
             <th className="border-[1px]  p-2 border-gray-500">Phone</th>
             <th className="border-[1px]  p-2 border-gray-500">Email</th>
@@ -156,17 +158,21 @@ const Dashboard = ({ setNavExist }) => {
         <tbody className="border-[1px] text-[13px]">
           {paginatedfilteredusers.map((user) => (
             <tr key={user._id} className="text-white">
-              <td className="border-[1px] border-gray-500 p-2">
+              <td className="border-[1px] max-sm:text-[7px] border-gray-500 p-2">
                 {user.FirstName}
               </td>
-              <td className="border-[1px] border-gray-500 p-2">
+              <td className="border-[1px] max-sm:text-[7px] border-gray-500 p-2">
                 {user.SecondName}
               </td>
-              <td className="border-[1px] border-gray-500 p-2">{user.Phone}</td>
-              <td className="border-[1px] border-gray-500 p-2">{user.Email}</td>
+              <td className="border-[1px] max-sm:text-[7px] border-gray-500 p-2">
+                {user.Phone}
+              </td>
+              <td className="border-[1px] max-sm:text-[7px] border-gray-500 p-2">
+                {user.Email}
+              </td>
               <td className="flex flex-row space-x-[10px] px-[10px] items-center justify-center border-[1px] border-gray-500 p-2">
                 <button
-                  className="text-white bg-black text-[12px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px]"
+                  className="text-white bg-black text-[12px] font-bold  max-sm:text-[7px] max-sm:p-[3px]  p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] max-sm:w-[40px] w-[80px]"
                   onClick={() => {
                     handleDelete(user._id);
                   }}
@@ -177,7 +183,7 @@ const Dashboard = ({ setNavExist }) => {
                   onClick={() => {
                     setShowModal(user._id);
                   }}
-                  className="text-white bg-black text-[12px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px]"
+                  className="text-white bg-black text-[12px] max-sm:text-[7px] max-sm:p-[3px] font-bold p-[5px] hover:bg-opacity-50 hover:border-[1px] hover:border-gray-400 rounded-[30px] w-[80px] max-sm:w-[40px]"
                 >
                   update
                 </button>
@@ -186,7 +192,7 @@ const Dashboard = ({ setNavExist }) => {
           ))}
         </tbody>
       </table>
-      <div className="flex flex-row space-x-[10px] items-center ml-[300px] text-[10px]">
+      <div className="flex flex-row space-x-[10px] max-sm:ml-[130px] items-center ml-[380px] text-[10px]">
         <GrFormPrevious
           onClick={handlePrevious}
           className="font-bold text-lg"
@@ -198,7 +204,7 @@ const Dashboard = ({ setNavExist }) => {
               onClick={() => {
                 handleNumberClick(PageNumber);
               }}
-              className={`p-[4px] rounded-full ${
+              className={`p-[4px] rounded-full max-sm:text-[7px] ${
                 CurrentPage === PageNumber ? "bg-gray-700" : "bg-black"
               }`}
             >
