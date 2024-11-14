@@ -6,11 +6,12 @@ import { MdDashboard } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ setNavExist }) => {
+const Navbar = ({ setNavExist }: { setNavExist: any }) => {
   return (
     <div className="w-[300px] max-sm:w-[230px] h-[600px] max-sm:h-[300px] absolute left-0 top-0 bg-black flex flex-col items-center rounded-tr-[10px] rounded-br-[10px]">
       <div className="flex flex-row space-x-[90px] max-sm:space-x-[90px] items-center justify-center pt-[40px] max-sm:p-[20px]">
         <img
+          alt="logo"
           src={MiniLogo}
           className="w-[125px] h-[50px] max-sm:w-[70px] max-sm:h-auto"
         />
@@ -38,6 +39,7 @@ const Navbar = ({ setNavExist }) => {
         </Link>
       </div>
       <img
+        alt="logo"
         src={Logo}
         className="mt-[300px] max-sm:mt-[90px] max-sm:w-[25px] max-sm:h-auto w-[45px] h-[30px]"
       />

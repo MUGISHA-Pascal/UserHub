@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 
-const UpdateModal = ({ setShowModal, ShowUpdate, setUsers }) => {
+const UpdateModal = ({
+  setShowModal,
+  ShowUpdate,
+  setUsers,
+}: {
+  setShowModal: any;
+  ShowUpdate: any;
+  setUsers: any;
+}) => {
   const [FirstName, setFirst] = useState("");
   const [SecondName, setSecond] = useState("");
-  const [Phone, setPhone] = useState(null);
+  const [Phone, setPhone] = useState<any>(null);
   const [Email, setEmail] = useState("");
-  const handlesubmit = async (e) => {
+  const handlesubmit = async (e: any) => {
     e.preventDefault();
     await fetch(
       `https://userhub-xmb9.onrender.com/app/Update-user/${ShowUpdate}`,
@@ -57,7 +65,7 @@ const UpdateModal = ({ setShowModal, ShowUpdate, setUsers }) => {
         <div className="mt-[10px] grid grid-cols-2 gap-[10px]">
           <div className="flex flex-col space-y-[7px] items-start">
             <label
-              for="firstName"
+              htmlFor="firstName"
               className="text-[15px] font-bold text-gray-100"
             >
               First name :
@@ -75,7 +83,7 @@ const UpdateModal = ({ setShowModal, ShowUpdate, setUsers }) => {
           </div>
           <div className="flex flex-col space-y-[7px] items-start">
             <label
-              for="firstName"
+              htmlFor="firstName"
               className="text-[15px] font-bold text-gray-100"
             >
               Second name :
@@ -93,7 +101,7 @@ const UpdateModal = ({ setShowModal, ShowUpdate, setUsers }) => {
           </div>
           <div className="flex flex-col space-y-[7px] items-start">
             <label
-              for="firstName"
+              htmlFor="firstName"
               className="text-[15px] font-bold text-gray-100"
             >
               Phone :
@@ -110,7 +118,10 @@ const UpdateModal = ({ setShowModal, ShowUpdate, setUsers }) => {
             />
           </div>
           <div className="flex flex-col space-y-[7px] items-start">
-            <label for="Email" className="text-[15px] font-bold text-gray-100">
+            <label
+              htmlFor="Email"
+              className="text-[15px] font-bold text-gray-100"
+            >
               Email :
             </label>
             <input
